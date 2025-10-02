@@ -14,6 +14,15 @@ class AvtomobilSerializer(serializers.ModelSerializer):
     class Meta:
         model = Avtomobil
         fields = ["id","nom","marka","yil","rang","narx","dvigatel","yurgan_km"]
+    
+    def create(self, validated_data):
+        return Avtomobil.objects.create(**validated_data)
+    
+    def update(self, instance, validate_data):
+        for key, value in  validate_data.items():
+            setattr(instance, key, value)
+            instance.save()
+            return instance
 
 
 class EgasiSerializer(serializers.ModelSerializer):
@@ -27,3 +36,12 @@ class EgasiSerializer(serializers.ModelSerializer):
     class Meta:
         model = Egasi
         fields = ["id","ism","familiya","yosh","telefon","manzil","avtomobil"]
+
+    def create(self, validated_data):
+        return Egasi.objects.create(**validated_data)
+    
+    def update(self, instance, validate_data):
+        for key, value in  validate_data.items():
+            setattr(instance, key, value)
+            instance.save()
+            return instance
