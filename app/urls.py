@@ -1,12 +1,11 @@
 from django.urls import path
-from .views import AvtomobilList, AvtomobilDetail, EgasiList, EgasiDetail
+from .views import AvtomobilAPIView, EgasiAPIView
 
 urlpatterns = [
-    # buham Avtomobil niki
-    path('avtomobil/', AvtomobilList.as_view()),
-    path('avtomobil/<int:pk>/', AvtomobilDetail.as_view()),
-
-    # bunisiham Egasi niki
-    path('egasi/', EgasiList.as_view()),
-    path('egasi/<int:pk>/', EgasiDetail.as_view()),
+    
+    path('avtomobil/', AvtomobilAPIView.as_view()),
+    path('avtomobil/<int:pk>/', AvtomobilAPIView.as_view()),
+    path('egasi/', EgasiAPIView.as_view()),
+    path('egasi/<int:pk>/', EgasiAPIView.as_view()),
 ]
+
